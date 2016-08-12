@@ -80,7 +80,12 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def project_params
-            params.fetch(:project, {}).permit(:name, :discription, :website, :category_id)
+            params.fetch(:project, {}).permit(:name,
+              :discription,
+              :website,
+              :category_id,
+              images_attributes: [:id, :user_id, :is_main, :image, :name, :_destroy]
+            )
           end
       end
     end

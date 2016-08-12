@@ -4,10 +4,8 @@ class CreateNaturesoftProjectsImages < ActiveRecord::Migration[5.0]
       t.string :name
       t.text :description
       t.string :image
-      t.integer :width
-      t.integer :height
-      t.string :scale_type
       t.string :status, :default => "active"
+      t.boolean :is_main, :default => false
       t.references :user, references: :naturesoft_users, index: true
       t.references :project, references: :naturesoft_projects_projects, index: true
 

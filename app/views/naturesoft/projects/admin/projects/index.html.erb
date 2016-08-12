@@ -41,6 +41,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr class="bg-teal-800">
+                        <th><%= t(:image) %></th>
                         <th><%= t(:name) %></th>
                         <th><%= t(:description) %></th>
                         <th><%= t(:website) %></th>
@@ -53,6 +54,9 @@
                 <tbody>
                     <% @projects.each do |project| %>
                         <tr>
+                            <td>
+                                <%= image_tag(image_src(project.main_image.image.system), class: "img-rounded img-preview") %>
+                            </td>
                             <td>
                                 <%= project.name %>
                             </td>

@@ -2,6 +2,10 @@ module Naturesoft::Projects
   class Project < ApplicationRecord
     belongs_to :user
     belongs_to :category
+    has_many :images, dependent: :destroy, :inverse_of => :project
+    accepts_nested_attributes_for :images,
+			:reject_if => lambda { |a| a[:image].blank? && a[:id].blank? },
+			:allow_destroy => true
     
     def self.sort_by
       [
@@ -42,6 +46,14 @@ module Naturesoft::Projects
     
     def disable
 			update_columns(status: "inactive")
+		end
+    
+    # get newest default image
+    def main_image
+			return Image.new if images.empty?
+			
+			img = images.where(is_main: true).last
+			return img.nil? ? images.last : img
 		end
   end
 end
