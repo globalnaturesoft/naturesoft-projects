@@ -1,37 +1,11 @@
-<% title "Setting: Partner" %>
+<% title "Setting: Project" %>
 
 <div class="panel panel-flat">
   <div class="panel-body">
     <%= form_for([naturesoft, :admin, Naturesoft::Option.new], html: {}) do |f| %>
       <h4 class="text-semibold">Thumbnail</h4>
       
-      <% ["big","medium","small"].each do |s| %>
-          <h5><%= s.capitalize %> size <span class="text-muted small">width x height + scale</span></h5>
-          <div class="row">
-            <div class="col-sm-3 col-md-3">
-              <div class="form-group">
-                <div class="">
-                  <%= text_field_tag "options[partners][thumbnails]["+s+"][width]", @options["partners"]["thumbnails"][s]["width"], class: "form-control number_input" %>
-                </div>
-              </div>          
-            </div>
-            <div class="col-sm-3 col-md-3">
-              <div class="form-group">
-                <div class="">
-                  <%= text_field_tag "options[partners][thumbnails]["+s+"][height]", @options["partners"]["thumbnails"][s]["height"], class: "form-control number_input" %>
-                </div>
-              </div>          
-            </div>
-            <div class="col-sm-3 col-md-3">
-              <div class="form-group">
-                <select class="select2" name="options[partners][thumbnails][<%= s %>][scale]">
-                  <option <%= "selected" if @options["partners"]["thumbnails"][s]["scale"] == "fill" %> value="fill"><%= t(:fill) %></option>
-                  <option <%= "selected" if @options["partners"]["thumbnails"][s]["scale"] == "fit" %> value="fit"><%= t(:fit) %></option>
-                </select>
-              </div>
-            </div>
-          </div>
-      <% end %>
+      
       
       <hr>
       <h4 class="text-semibold">Listing</h4>
@@ -40,7 +14,7 @@
           <div class="form-group">
             <label class="control-label" ><%= t(:items_per_page) %> <span class='text-danger'>*</span></label>
             <div class="">
-              <%= text_field_tag "options[partners][items_per_page]", @options["partners"]["items_per_page"], class: "form-control number_input" %>
+              <%= text_field_tag "options[projects][items_per_page]", @options["projects"]["items_per_page"], class: "form-control number_input" %>
             </div>
           </div>          
         </div>
@@ -68,7 +42,7 @@
     
       <div class="text-right">
         <%= button_tag "#{t(:save)}<i class=\"icon-check position-right\"></i>".html_safe, class: "btn btn-primary"%>
-        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_partners.admin_partners_path, class: "btn btn-danger"%>
+        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_projects.admin_projects_path, class: "btn btn-danger"%>
       </div>
         
     <% end %>
