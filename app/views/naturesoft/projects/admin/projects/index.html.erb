@@ -96,16 +96,16 @@
                     <% end %>
                 </tbody>
             </table>
+            <div class="dataTables_wrapper no-footer">
+                <div class="datatable-footer showed">
+                    <div class="dataTables_info" ><%= page_entries_info @projects %></div>
+                    <div class="dataTables_paginate paging_simple_numbers">
+                        <%= will_paginate @projects, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                    </div>
+                </div>
+            </div>  
         </div>
         
-        <div class="dataTables_wrapper no-footer">
-            <div class="datatable-footer showed">
-                <div class="dataTables_info" ><%= page_entries_info @projects %></div>
-                <div class="dataTables_paginate paging_simple_numbers">
-                    <%= will_paginate @projects, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
-                </div>
-            </div>
-        </div>    
     </div>
     <!-- /basic datatable -->
 </form>
