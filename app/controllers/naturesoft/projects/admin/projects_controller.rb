@@ -12,7 +12,7 @@ module Naturesoft
     
         # GET /projects
         def index
-          @projects = Project.search(params).paginate(:page => params[:page], :per_page => 10)
+          @projects = Project.search(params).paginate(:page => params[:page], :per_page => Naturesoft::Option.get("projects", "items_per_page"))
         end
     
         # GET /projects/1
