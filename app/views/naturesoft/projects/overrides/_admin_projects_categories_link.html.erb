@@ -1,0 +1,14 @@
+<li>
+  <a href="#"><i class="icon-puzzle3"></i> <span>Project</span></a>
+  <ul>
+      <li<% if["naturesoft/projects/admin/projects"].include?(params[:controller]) %>class="active"<% end %>>
+        <%= link_to 'Projects', naturesoft_projects.admin_projects_path %>
+      </li>
+      <li<% if["naturesoft/projects/admin/projects"].include?(params[:controller]) %>class="active"<% end %>>
+        <%= link_to 'Categories', naturesoft_projects.admin_categories_path %>
+      </li>
+      <li<% if["naturesoft/projects/admin/projects"].include?(params[:controller]) %>class="active"<% end %>>
+        <%= link_to 'Images', naturesoft_projects.admin_images_path %>
+      </li>
+  </ul>
+</li>
