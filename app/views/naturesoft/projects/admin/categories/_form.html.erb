@@ -35,12 +35,21 @@
               <%= f.text_area :description, class: "form-control required", style: "min-width:100%;max-width:100%" %>
             </div>
           </div>
+          
+          <div class="text-right">
+            <%= button_tag "#{t(:save)}<i class=\"icon-check position-right\"></i>".html_safe, class: "btn btn-primary"%>
+            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_projects.admin_categories_path, class: "btn btn-danger"%>
+          </div>
         </div>
-      </div>
-    
-      <div class="text-right">
-        <%= button_tag "#{t(:save)}<i class=\"icon-check position-right\"></i>".html_safe, class: "btn btn-primary"%>
-        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_projects.admin_categories_path, class: "btn btn-danger"%>
+        
+        <div class="col-md-6">
+          
+            <label class="col-lg-5 control-label" ><%= t(:related_categories) %> <span class='text-danger'>*</span></label>
+              <div class="col-lg-7">
+                  
+              </div>
+          
+        </div>
       </div>
         
     <% end %>
