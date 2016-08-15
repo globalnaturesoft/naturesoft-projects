@@ -71,6 +71,13 @@ module Naturesoft
           @project.disable
           render text: "Status was sucessfully disabled"
         end
+        
+        # DELETE /projects/delete?ids=1,2,3
+        def delete
+          @projects = Project.where(id: params[:ids].split(","))
+          @projects.destroy_all
+          render text: 'Project(s) was successfully destroyed.'
+        end
     
         private
           # Use callbacks to share common setup or constraints between actions.

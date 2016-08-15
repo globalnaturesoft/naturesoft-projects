@@ -4,6 +4,7 @@ Naturesoft::Projects::Engine.routes.draw do
       collection do
         put ':id/enable' => 'projects#enable', :as => 'enable'
         put ':id/disable' => 'projects#disable', :as => 'disable'
+        delete 'delete'
       end
     end
     resources :categories do

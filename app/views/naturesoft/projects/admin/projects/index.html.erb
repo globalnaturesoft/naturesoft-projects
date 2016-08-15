@@ -34,18 +34,32 @@
             </div>
         </div>
     </div>
-    
+    <div class="btn-group list_actions mb-10 hide">
+        <button type="button" class="btn btn-xs btn-info dropdown-toggle" data-toggle="dropdown">
+            Actions <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">											
+            <li>
+                <a href="" data-href="<%= naturesoft_projects.delete_admin_projects_path %>" data-confirm="Are you sure!" data-method="DELETE">
+                    <i class="icon-enter"></i> Delete
+                </a>
+            </li>            
+        </ul>
+    </div>
     <!-- Basic datatable -->
     <div class="panel panel-flat">        
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
                     <tr class="bg-teal-800">
-                        <th><%= t(:image) %></th>
+                        <th width="1%" class="check_all_list">
+                            <input type="checkbox" class="styled">
+                        </th>
+                        <th width="1%"><%= t(:image) %></th>
                         <th><%= t(:name) %></th>
                         <th><%= t(:description) %></th>
                         <th><%= t(:website) %></th>
-                        <th><%= t(:creator)%></th>
+                        <th class="text-center"><%= t(:creator)%></th>
                         <th><%= t(:created_at) %></th>
                         <th><%= t(:status) %></th>
                         <th class="text-right"><%= t(:actions) %></th>
@@ -54,6 +68,12 @@
                 <tbody>
                     <% @projects.each do |project| %>
                         <tr>
+                            <td width="1%">
+                                <input type="checkbox" class="node styled"
+                                    name="ids[]"
+                                    value="<%= project.id %>"
+                                />
+                            </td>
                             <td>
                                 <%= image_tag(image_src(project.main_image.image.system), class: "img-rounded img-preview") %>
                             </td>
@@ -66,11 +86,11 @@
                             <td>
                                 <%= project.website %>
                             </td>
-                            <td>
-                                <div class="media-left align_center">
-                                    <img src="<%= image_src(project.user.image.system) %>" class="img-circle" alt="">
+                            <td class="text-center">
+                                <span class="align_center" style="display: inline">
+                                    <img width="50" src="<%= image_src(project.user.image.system) %>" class="img-circle" alt="">
                                     <br /><%= project.user.display_name %>
-                                </div>
+                                </span>
                             </td>
                             <td><%= project.created_at.strftime("%d/%m/%Y") %></td>
                             <td><%= display_status(project.status) %></td>
