@@ -44,7 +44,7 @@
                         <th><%= t(:name) %></th>
                         <th><%= t(:description) %></th>
                         <th><%= t(:status) %></th>
-                        <th><%= t(:creator)%></th>
+                        <th class="text-center"><%= t(:creator)%></th>
                         <th><%= t(:created_at) %></th>
                         <th class="text-right"><%= t(:actions) %></th>
                     </tr>
@@ -61,11 +61,8 @@
                             <td>
                                 <%= display_status(category.status) %>
                             </td>
-                            <td>
-                                <div class="media-left align_center">
-                                    <img src="<%= image_src(category.user.image.system) %>" class="img-circle" alt="">
-                                    <br /><%= category.user.display_name %>
-                                </div>
+                            <td class="text-center">
+                                <%= user_box(item.user) %>
                             </td>
                             <td><%= category.created_at.strftime("%d/%m/%Y") %></td>
                             <td class="text-right">
