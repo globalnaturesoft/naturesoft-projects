@@ -19,8 +19,5 @@ Naturesoft::Projects::Engine.routes.draw do
         put ':id/disable' => 'images#disable', :as => 'disable'
       end
     end
-    
-    # Setting page
-    get 'settings' => 'options#index', :as => :options
   end
 end

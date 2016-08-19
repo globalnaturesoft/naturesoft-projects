@@ -91,7 +91,7 @@ module Naturesoft
               :discription,
               :website,
               :category_id,
-              images_attributes: [:id, :user_id, :is_main, :image, :name, :_destroy]
+              images_attributes: [:id, :is_main, :image, :name, :_destroy]
             )
           end
       end
