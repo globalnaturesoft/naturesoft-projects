@@ -13,7 +13,7 @@
       
       <div class="addable-form" data-sample="thumbnail-size-form">
         <div class="addable-container">
-          <% @options["projects"]["thumbnails"].each_with_index do |size, index| %>
+          <% @options["projects"]["images_thumbnails"].each_with_index do |size, index| %>
             <%= render 'thumbnail_size', size: size[1], index: index %>
           <% end %>
         </div>

@@ -1,7 +1,7 @@
 Naturesoft::Option.class_eval do
   @projects = {
     "items_per_page" => 10,
-    "thumbnails" => {
+    "images_thumbnails" => {
       "0" => {
         "code" => "big",
         "width" => "500",

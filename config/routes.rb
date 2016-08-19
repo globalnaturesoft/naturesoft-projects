@@ -1,4 +1,9 @@
 Naturesoft::Projects::Engine.routes.draw do
+  # Frontend
+  get "portfolio.html" => "projects#projects_list", as: :projects_list
+  get "portfolio/(:name)-:project_id.html" => "projects#detail", as: :projects_detail
+  
+  # Backend
   namespace :admin, module: "admin", path: "admin/projects" do
     resources :projects do
       collection do
