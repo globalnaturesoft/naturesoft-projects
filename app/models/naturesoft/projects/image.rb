@@ -1,6 +1,5 @@
 module Naturesoft::Projects
   class Image < ApplicationRecord
-    belongs_to :user
     belongs_to :project
     validates :image, presence: true
 		validates :image, allow_blank: true, format: {

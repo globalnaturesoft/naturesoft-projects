@@ -51,7 +51,7 @@ module Naturesoft
       
       # For backend list
 			version :system do
-				process :resize_to_fit => [60, 60]
+				process :resize_to_fill => [70, 70]
 			end
 			
 			# Thumbnails sizes

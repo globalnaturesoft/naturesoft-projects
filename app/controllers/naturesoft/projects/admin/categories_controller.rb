@@ -60,16 +60,23 @@ module Naturesoft
           render text: 'Category was successfully destroyed.'
         end
         
-        # ENABLE /partners/stutus
+        # ENABLE /categories/stutus
         def enable
           @category.enable
           render text: "Status was sucessfully enabled"
         end
         
-        # DISABLE /partners/stutus
+        # DISABLE /categories/stutus
         def disable
           @category.disable
           render text: "Status was sucessfully disabled"
+        end
+        
+        # DELETE /categories/delete?ids=1,2,3
+        def delete
+          @categories = Category.where(id: params[:ids].split(","))
+          @categories.destroy_all
+          render text: 'Categor(y/ies) was successfully destroyed.'
         end
     
         private

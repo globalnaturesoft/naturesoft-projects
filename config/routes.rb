@@ -16,12 +16,14 @@ Naturesoft::Projects::Engine.routes.draw do
       collection do
         put ':id/enable' => 'categories#enable', :as => 'enable'
         put ':id/disable' => 'categories#disable', :as => 'disable'
+        delete 'delete'
       end
     end
     resources :images do
       collection do
         put ':id/enable' => 'images#enable', :as => 'enable'
         put ':id/disable' => 'images#disable', :as => 'disable'
+        delete 'delete'
       end
     end
   end

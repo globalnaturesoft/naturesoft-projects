@@ -36,7 +36,6 @@ module Naturesoft
         # POST /images
         def create
           @image = Image.new(image_params)
-          @image.user = current_user
     
           if @image.save
             redirect_to admin_images_path, notice: 'Image was successfully created.'
@@ -60,16 +59,23 @@ module Naturesoft
           render text: 'Image was successfully destroyed.'
         end
         
-        # ENABLE /partners/stutus
+        # ENABLE /images/stutus
         def enable
           @image.enable
           render text: "Status was sucessfully enabled"
         end
         
-        # DISABLE /partners/stutus
+        # DISABLE /images/stutus
         def disable
           @image.disable
           render text: "Status was sucessfully disabled"
+        end
+        
+        # DELETE /images/delete?ids=1,2,3
+        def delete
+          @images = Image.where(id: params[:ids].split(","))
+          @images.destroy_all
+          render text: 'Image (s) was successfully destroyed.'
         end
     
         private

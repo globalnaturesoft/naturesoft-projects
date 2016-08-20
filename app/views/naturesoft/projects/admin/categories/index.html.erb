@@ -1,4 +1,4 @@
-<% title "Categories of Project" %>
+<% title "Project >> Categories" %>
 
 <div class="page_actions">
     <%= link_to ("#{t(:new_category)}" + '<i class="icon-plus22 position-right"></i>').html_safe, naturesoft_projects.new_admin_category_path, class: 'btn btn-primary' %>
@@ -34,13 +34,27 @@
             </div>
         </div>
     </div>
-    
+    <div class="btn-group list_actions mb-10 hide">
+        <button type="button" class="btn btn-xs btn-info dropdown-toggle" data-toggle="dropdown">
+            Actions <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">											
+            <li>
+                <a href="" data-href="<%= naturesoft_projects.delete_admin_categories_path %>" data-confirm="Are you sure!" data-method="DELETE">
+                    <i class="icon-enter"></i> Delete
+                </a>
+            </li>            
+        </ul>
+    </div>
     <!-- Basic datatable -->
     <div class="panel panel-flat">        
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
                     <tr class="bg-teal-800">
+                        <th width="1%" class="check_all_list">
+                            <input type="checkbox" class="styled">
+                        </th>
                         <th><%= t(:name) %></th>
                         <th><%= t(:description) %></th>
                         <th><%= t(:status) %></th>
@@ -52,6 +66,12 @@
                 <tbody>
                     <% @categories.each do |category| %>
                         <tr>
+                            <td width="1%">
+                                <input type="checkbox" class="node styled"
+                                    name="ids[]"
+                                    value="<%= category.id %>"
+                                />
+                            </td>
                             <td>
                                 <%= category.name %>
                             </td>
@@ -62,7 +82,7 @@
                                 <%= display_status(category.status) %>
                             </td>
                             <td class="text-center">
-                                <%= user_box(item.user) %>
+                                <%= user_box(category.user) %>
                             </td>
                             <td><%= category.created_at.strftime("%d/%m/%Y") %></td>
                             <td class="text-right">

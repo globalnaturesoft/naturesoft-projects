@@ -61,7 +61,6 @@
                         <th><%= t(:website) %></th>
                         <th class="text-center"><%= t(:creator)%></th>
                         <th><%= t(:created_at) %></th>
-                        <th><%= t(:status) %></th>
                         <th class="text-right"><%= t(:actions) %></th>
                     </tr>
                 </thead>
@@ -75,25 +74,22 @@
                                 />
                             </td>
                             <td>
-                                <%= image_tag(image_src(project.main_image.image.system), class: "img-rounded img-preview") %>
+                                <%= image_tag(image_src(project.main_image.image.system), size: "60x60", class: "img-rounded img-preview") %>
                             </td>
                             <td>
-                                <%= project.name %>
+                                <%= project.name %><br>
+                                <%= display_status(project.status) %>
                             </td>
                             <td>
                                 <%= project.description %>
                             </td>
                             <td>
-                                <%= project.website %>
+                                <%= link_to(project.website, project.website, target: "_blank") %>
                             </td>
                             <td class="text-center">
-                                <span class="align_center" style="display: inline">
-                                    <img width="50" src="<%= image_src(project.user.image.system) %>" class="img-circle" alt="">
-                                    <br /><%= project.user.display_name %>
-                                </span>
+                                <%= user_box(project.user) %>
                             </td>
                             <td><%= project.created_at.strftime("%d/%m/%Y") %></td>
-                            <td><%= display_status(project.status) %></td>
                             <td class="text-right">
                                 <div class="btn-group">
                                     <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_projects.edit_admin_project_path(project), class: "btn bg-teal-400 btn-icon" %>
