@@ -10,8 +10,8 @@ Naturesoft::Option.class_eval do
       },
       "1" => {
         "code" => "medium",
-        "width" => "160",
-        "height" => "160",
+        "width" => "400",
+        "height" => "267",
         "scale" => "fill"
       },
       "2" => {
