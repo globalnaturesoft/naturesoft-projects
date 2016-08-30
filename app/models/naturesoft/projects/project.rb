@@ -1,5 +1,7 @@
 module Naturesoft::Projects
   class Project < ApplicationRecord
+		include Naturesoft::CustomOrder
+		
     belongs_to :user
     belongs_to :category
     has_many :images, dependent: :destroy, :inverse_of => :project
@@ -9,6 +11,7 @@ module Naturesoft::Projects
     
     def self.sort_by
       [
+				["Custom order","naturesoft_projects_projects.custom_order"],
         ["Name","naturesoft_projects_projects.name"],
         ["Created At","naturesoft_projects_projects.created_at"]
       ]
