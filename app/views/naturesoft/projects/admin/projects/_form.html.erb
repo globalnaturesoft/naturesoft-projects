@@ -43,9 +43,9 @@
               </div>
                 
               <div class="form-group">
-                <label class="col-md-2 control-label" ><%= t(:related_category) %> <span class='text-danger'>*</span></label>
+                <label class="col-md-2 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
                 <div class="col-md-10">
-                  <%= f.collection_select(:category_id, Naturesoft::Projects::Category.all, :id, :name, {:prompt=> "Choose..."}, {class: "select2"}) %>
+                  <%= f.collection_select(:category_id, Naturesoft::Projects::Category.all, :id, :name, {:prompt=> "Choose..."}, {class: "select2 required"}) %>
                 </div>
               </div>
               
