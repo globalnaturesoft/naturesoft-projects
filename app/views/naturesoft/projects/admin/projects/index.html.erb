@@ -88,7 +88,7 @@
                                 <%= project.description %>
                             </td>
                             <td>
-                                <%= link_to(project.website, project.website, target: "_blank") %>
+                                <%= link_to(truncate(strip_tags(project.website), length: 30), project.website, target: "_blank", class: "no-tab") %>
                             </td>
                             <td class="text-center">
                                 <%= user_box(project.user) %>
