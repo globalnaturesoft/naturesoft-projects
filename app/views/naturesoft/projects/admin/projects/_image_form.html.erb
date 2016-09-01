@@ -12,7 +12,7 @@
                     </div>
               
                     <div class="media-body">
-                      <input type="file" name="project[images_attributes][<%= index %>][image]" class="file-styled">
+                      <input type="file" name="project[images_attributes][<%= index %>][image]" class="">
                       <span class="help-block">Accepted formats: gif, png, jpg.</span>
                     </div>
                   </div>
@@ -30,7 +30,7 @@
                 <div class="form-group">
                   <div><%= t(:remove) %> </div>
                   <div class="">
-                    <input type="checkbox" value="true" class="checkbox required delete" name="project[images_attributes][<%= index %>][_destroy]" />
+                    <input type="checkbox" value="true" class="checkbox delete" name="project[images_attributes][<%= index %>][_destroy]" />
                   </div>
                 </div>
               </div>
