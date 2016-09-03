@@ -45,7 +45,12 @@
               <div class="form-group">
                 <label class="col-md-2 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
                 <div class="col-md-10">
-                  <%= f.collection_select(:category_id, Naturesoft::Projects::Category.all, :id, :name, {:prompt=> "Choose..."}, {class: "select2 required"}) %>
+                  <!--f.collection_select(:category_id, Naturesoft::Projects::Category.all, :id, :name, {:prompt=> "Choose..."}, {class: "select2 required"}) %>-->
+                  <select name="category_ids[]" id="category_ids" class="multi-select2-categories" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
+                      <% Naturesoft::Projects::Category.all.each do |item| %>
+                          <option <%= "selected" if project.categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                      <% end %>
+                  </select>
                 </div>
               </div>
               

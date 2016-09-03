@@ -37,6 +37,11 @@ module Naturesoft
         def create
           @project = Project.new(project_params)
           @project.user = current_user
+          if params[:category_ids].present?
+            params[:category_ids].each do |id|      
+              @project.categories << Category.find(id)
+            end
+          end
     
           if @project.save
             redirect_to admin_projects_path, notice: 'Project was successfully created.'
@@ -47,6 +52,11 @@ module Naturesoft
     
         # PATCH/PUT /projects/1
         def update
+          if params[:category_ids].present?
+            params[:category_ids].each do |id|      
+              @project.categories << Category.find(id)
+            end
+          end
           if @project.update(project_params)
             redirect_to admin_projects_path, notice: 'Project was successfully updated.'
           else
@@ -90,7 +100,6 @@ module Naturesoft
             params.fetch(:project, {}).permit(:name,
               :discription,
               :website,
-              :category_id,
               images_attributes: [:id, :is_main, :image, :name, :_destroy]
             )
           end

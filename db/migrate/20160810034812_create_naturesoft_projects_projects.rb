@@ -6,7 +6,6 @@ class CreateNaturesoftProjectsProjects < ActiveRecord::Migration[5.0]
       t.string :website
       t.string :status, :default => "active"
       t.references :user, references: :naturesoft_users, index: true
-      t.references :category, references: :naturesoft_projects_categories, index: true
 
       t.timestamps
     end

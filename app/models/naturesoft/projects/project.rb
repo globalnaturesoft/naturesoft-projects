@@ -3,7 +3,7 @@ module Naturesoft::Projects
 		include Naturesoft::CustomOrder
 		
     belongs_to :user
-    belongs_to :category
+    has_and_belongs_to_many :categories
     has_many :images, dependent: :destroy, :inverse_of => :project
     accepts_nested_attributes_for :images,
 			:reject_if => lambda { |a| a[:image].blank? && a[:id].blank? },
