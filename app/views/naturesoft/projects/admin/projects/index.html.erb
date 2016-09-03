@@ -57,10 +57,10 @@
                         </th>
                         <th width="1%"><%= t(:image) %></th>
                         <th><%= t(:name) %></th>
-                        <th><%= t(:description) %></th>
                         <th><%= t(:website) %></th>
                         <th class="text-center"><%= t(:creator)%></th>
                         <th><%= t(:created_at) %></th>
+                        <th><%= t(:status) %></th>
                         <th class="text-right"><%= t(:actions) %></th>
                     </tr>
                 </thead>
@@ -81,11 +81,7 @@
                                 <%= image_tag(image_src(project.main_image.image.system), size: "60x60", class: "img-rounded img-preview") %>
                             </td>
                             <td>
-                                <%= project.name %><br>
-                                <%= display_status(project.status) %>
-                            </td>
-                            <td>
-                                <%= project.description %>
+                                <%= project.name %>
                             </td>
                             <td>
                                 <%= link_to(truncate(strip_tags(project.website), length: 30), project.website, target: "_blank", class: "no-tab") %>
@@ -94,6 +90,7 @@
                                 <%= user_box(project.user) %>
                             </td>
                             <td><%= project.created_at.strftime("%d/%m/%Y") %></td>
+                            <td><%= display_status(project.status) %></td>
                             <td class="text-right">
                                 <div class="btn-group">
                                     <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_projects.edit_admin_project_path(project), class: "btn bg-teal-400 btn-icon" %>
