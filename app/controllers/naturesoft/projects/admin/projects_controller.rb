@@ -36,6 +36,7 @@ module Naturesoft
         # POST /projects
         def create
           @project = Project.new(project_params)
+          @project.categories.clear
           @project.user = current_user
           if params[:category_ids].present?
             params[:category_ids].each do |id|      
@@ -52,6 +53,7 @@ module Naturesoft
     
         # PATCH/PUT /projects/1
         def update
+          @project.categories.clear
           if params[:category_ids].present?
             params[:category_ids].each do |id|      
               @project.categories << Category.find(id)
@@ -100,6 +102,10 @@ module Naturesoft
             params.fetch(:project, {}).permit(:name,
               :description,
               :website,
+              :investor,
+              :start_date,
+              :end_date,
+              :category_id,
               images_attributes: [:id, :is_main, :image, :name, :_destroy]
             )
           end

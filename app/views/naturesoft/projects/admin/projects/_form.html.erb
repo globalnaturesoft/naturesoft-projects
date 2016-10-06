@@ -28,52 +28,88 @@
   
         <div class="tab-content">
           <div class="tab-pane active" id="right-icon-tab1">
-              <div class="form-group">
-                <label class="col-md-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
-                <div class="col-md-10">
-                  <%= f.text_field :name, class: "form-control required" %>
-                </div>
-              </div>
-                
-              <div class="form-group">
-                <label class="col-md-2 control-label" ><%= t(:website) %> <span class='text-danger'>*</span></label>
-                <div class="col-md-10">
-                  <%= f.text_field :website, class: "form-control required" %>
-                </div>
-              </div>
-                
-              <div class="form-group">
-                <label class="col-md-2 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
-                <div class="col-md-10">
-                  <div class="input-group">
-                  <!--<select name="category_ids[]" id="category_ids" class="multi-select2-categories" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
-                      <% Naturesoft::Projects::Category.all.each do |item| %>
-                          <option <%= "selected" if project.categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
-                      <% end %>
-                  </select>-->
-                    <% selected = options_for_select((project.categories.map {|c| [c.name, c.id]}),project.categories.map(&:id)) %>
-                    <%= select_tag("category_ids[]",
-                      selected,
-                      {
-                        class: "select2-ajax required",
-                        include_blank: "none",
-                        multiple: "multiple",
-                        "data-url": select2_admin_categories_path,
-                      }
-                    ) %>
-                    <span class="input-group-btn">
-                      <a class="btn btn-info" href="<%= naturesoft_projects.new_admin_category_path %>"><i class="icon-plus2"></i></a>
-                    </span>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-md-12 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
+                  <div class="col-md-12">
+                    <%= f.text_field :name, class: "form-control required" %>
                   </div>
                 </div>
               </div>
-              
-              <div class="form-group">
-                <label class="col-md-2 control-label" ><%= t(:description) %> </label>
-                <div class="col-md-10">
-                  <%= f.text_area :description, class: "form-control", style: "min-width:100%;max-width:100%" %>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-md-12 control-label" ><%= t(:investor) %> <span class='text-danger'>*</span></label>
+                  <div class="col-md-12">
+                    <%= f.text_field :investor, class: "form-control required" %>
+                  </div>
                 </div>
               </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-md-12 control-label" ><%= t(:website) %> </label>
+                  <div class="col-md-12">
+                    <%= f.text_field :website, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                <label class="col-md-12 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
+                <div class="col-md-12">
+                  <div class="input-group">
+                    
+                      <% selected = options_for_select((project.categories.map {|c| [c.name, c.id]}),project.categories.map(&:id)) %>
+                      <%= select_tag("category_ids[]",
+                        selected,
+                        {
+                          class: "select2-ajax required",
+                          include_blank: "none",
+                          multiple: "multiple",
+                          "data-url": select2_admin_categories_path,
+                        }
+                      ) %>
+                      <span class="input-group-btn">
+                        <a class="btn btn-info" href="<%= naturesoft_projects.new_admin_category_path %>"><i class="icon-plus2"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-md-12 control-label" ><%= t(:start_date) %> </label>
+                  <div class="col-md-12">
+                    <%= f.text_field :start_date, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-md-12 control-label" ><%= t(:end_date) %> </label>
+                  <div class="col-md-12">
+                    <%= f.text_field :end_date, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="col-md-12 control-label" ><%= t(:description) %> </label>
+                  <div class="col-md-12">
+                    <%= f.text_area :description, class: "form-control", style: "min-width:100%;max-width:100%" %>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
   
           <div class="tab-pane addable-form" data-sample="image-form" id="right-icon-tab2">
@@ -95,7 +131,6 @@
 
       <div class="text-right">
         <%= button_tag "#{t(:save)}<i class=\"icon-check position-right\"></i>".html_safe, class: "btn btn-primary"%>
-        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_projects.admin_projects_path, class: "btn btn-danger"%>
       </div>
       
     <% end %>
