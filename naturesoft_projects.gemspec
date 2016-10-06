@@ -7,8 +7,12 @@ require "naturesoft/projects/version"
 Gem::Specification.new do |s|
   s.name        = "naturesoft_projects"
   s.version     = Naturesoft::Projects::VERSION
-  s.authors     = ["Luan Pham","Son Nguyen","Hung Nguyen"]
-  s.email       = ["luanpm@hoangkhang.com.vn","sonnn@hoangkhang.com.vn","hungnt@hoangkhang.com.vn"]
+  s.authors     = ["Luan Pham",
+                  "Son Nguyen",
+                  "Hung Nguyen"]
+  s.email       = ["luanpm@hoangkhang.com.vn",
+                  "sonnn@hoangkhang.com.vn",
+                  "hungnt@hoangkhang.com.vn"]
   s.homepage    = "http://globalnaturesoft.com/"
   s.summary     = "Projects features of Global Naturesoft."
   s.description = "Projects features of Global Naturesof"
