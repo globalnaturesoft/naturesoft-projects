@@ -19,7 +19,7 @@
   
   <div class="panel-body">
 
-    <%= form_for([naturesoft_projects, :admin, category], html: {class: "form-horizontal", id: "validate_checking", multipart: true}) do |f| %>
+    <%= form_for([naturesoft_projects, :backend, category], html: {class: "form-horizontal", id: "validate_checking", multipart: true}) do |f| %>
               
       <div class="row">
         <div class="col-md-6">
@@ -38,7 +38,7 @@
           
           <div class="text-right">
             <%= button_tag "#{t(:save)}<i class=\"icon-check position-right\"></i>".html_safe, class: "btn btn-primary"%>
-            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_projects.admin_categories_path, class: "btn btn-danger"%>
+            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_projects.backend_categories_path, class: "btn btn-danger"%>
           </div>
         </div>
         

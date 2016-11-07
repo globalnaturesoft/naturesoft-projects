@@ -1,5 +1,5 @@
 Naturesoft::Projects::Engine.routes.draw do
-  namespace :admin, module: "admin", path: "admin/projects" do
+  namespace :backend, module: "backend", path: "backend/projects" do
     resources :projects do
       collection do
         put ':id/enable' => 'projects#enable', :as => 'enable'

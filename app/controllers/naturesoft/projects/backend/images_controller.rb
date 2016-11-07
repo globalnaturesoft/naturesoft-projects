@@ -1,13 +1,13 @@
 module Naturesoft
   module Projects
-    module Admin
-      class ImagesController < Naturesoft::Admin::AdminController
+    module Backend
+      class ImagesController < Naturesoft::Backend::BackendController
         before_action :set_image, only: [:show, :edit, :update, :destroy, :enable, :disable]
         before_action :default_breadcrumb
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Images Of Projects", naturesoft_projects.admin_images_path
+          add_breadcrumb "Images Of Projects", naturesoft_projects.backend_images_path
         end
     
         # GET /images
@@ -17,19 +17,19 @@ module Naturesoft
     
         # GET /images/1
         def show
-          add_breadcrumb @image.name, naturesoft_projects.new_admin_image_path
+          add_breadcrumb @image.name, naturesoft_projects.new_backend_image_path
           add_breadcrumb "Show"
         end
     
         # GET /images/new
         def new
           @image = Image.new
-          add_breadcrumb "New Image", naturesoft_projects.new_admin_image_path
+          add_breadcrumb "New Image", naturesoft_projects.new_backend_image_path
         end
     
         # GET /images/1/edit
         def edit
-          add_breadcrumb @image.name, naturesoft_projects.new_admin_image_path
+          add_breadcrumb @image.name, naturesoft_projects.new_backend_image_path
           add_breadcrumb "Edit"
         end
     
@@ -38,7 +38,7 @@ module Naturesoft
           @image = Image.new(image_params)
     
           if @image.save
-            redirect_to admin_images_path, notice: 'Image was successfully created.'
+            redirect_to backend_images_path, notice: 'Image was successfully created.'
           else
             render :new
           end
@@ -47,7 +47,7 @@ module Naturesoft
         # PATCH/PUT /images/1
         def update
           if @image.update(image_params)
-            redirect_to admin_images_path, notice: 'Image was successfully updated.'
+            redirect_to backend_images_path, notice: 'Image was successfully updated.'
           else
             render :edit
           end

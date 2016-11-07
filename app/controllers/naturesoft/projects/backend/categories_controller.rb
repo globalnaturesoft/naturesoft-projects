@@ -1,13 +1,13 @@
 module Naturesoft
   module Projects
-    module Admin
-      class CategoriesController < Naturesoft::Admin::AdminController
+    module Backend
+      class CategoriesController < Naturesoft::Backend::BackendController
         before_action :set_category, only: [:show, :edit, :update, :destroy, :enable, :disable]
         before_action :default_breadcrumb
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Categories Of Projects", naturesoft_projects.admin_categories_path
+          add_breadcrumb "Categories Of Projects", naturesoft_projects.backend_categories_path
         end
     
         # GET /categories
@@ -17,19 +17,19 @@ module Naturesoft
     
         # GET /categories/1
         def show
-          add_breadcrumb @category.name, naturesoft_projects.new_admin_category_path
+          add_breadcrumb @category.name, naturesoft_projects.new_backend_category_path
           add_breadcrumb "Show"
         end
     
         # GET /categories/new
         def new
           @category = Category.new
-          add_breadcrumb "New Category", naturesoft_projects.new_admin_category_path
+          add_breadcrumb "New Category", naturesoft_projects.new_backend_category_path
         end
     
         # GET /categories/1/edit
         def edit
-          add_breadcrumb @category.name, naturesoft_projects.new_admin_category_path
+          add_breadcrumb @category.name, naturesoft_projects.new_backend_category_path
           add_breadcrumb "Edit"
         end
     
@@ -39,7 +39,7 @@ module Naturesoft
           @category.user = current_user
     
           if @category.save
-            redirect_to admin_categories_path, notice: 'Category was successfully created.'
+            redirect_to backend_categories_path, notice: 'Category was successfully created.'
           else
             render :new
           end
@@ -48,7 +48,7 @@ module Naturesoft
         # PATCH/PUT /categories/1
         def update
           if @category.update(category_params)
-            redirect_to admin_categories_path, notice: 'Category was successfully updated.'
+            redirect_to backend_categories_path, notice: 'Category was successfully updated.'
           else
             render :edit
           end

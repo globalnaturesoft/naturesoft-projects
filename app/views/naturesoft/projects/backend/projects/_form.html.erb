@@ -18,7 +18,7 @@
   <div class="panel-heading"></div>
   
   <div class="panel-body">
-    <%= form_for([naturesoft_projects, :admin, project], html: {class: "form-horizontal validate", multipart: true}) do |f| %>
+    <%= form_for([naturesoft_projects, :backend, project], html: {class: "form-horizontal validate", multipart: true}) do |f| %>
     
       <div class="tabbable">
         <ul class="nav nav-tabs nav-tabs-bottom">
@@ -69,11 +69,11 @@
                           class: "select2-ajax required",
                           include_blank: "none",
                           multiple: "multiple",
-                          "data-url": select2_admin_categories_path,
+                          "data-url": select2_backend_categories_path,
                         }
                       ) %>
                       <span class="input-group-btn">
-                        <a class="btn btn-info" href="<%= naturesoft_projects.new_admin_category_path %>"><i class="icon-plus2"></i></a>
+                        <a class="btn btn-info" href="<%= naturesoft_projects.new_backend_category_path %>"><i class="icon-plus2"></i></a>
                       </span>
                     </div>
                   </div>

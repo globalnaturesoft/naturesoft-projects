@@ -1,13 +1,13 @@
 module Naturesoft
   module Projects
-    module Admin
-      class ProjectsController < Naturesoft::Admin::AdminController
+    module Backend
+      class ProjectsController < Naturesoft::Backend::BackendController
         before_action :set_project, only: [:show, :edit, :update, :destroy, :enable, :disable]
         before_action :default_breadcrumb
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Projects", naturesoft_projects.admin_projects_path
+          add_breadcrumb "Projects", naturesoft_projects.backend_projects_path
         end
     
         # GET /projects
@@ -17,19 +17,19 @@ module Naturesoft
     
         # GET /projects/1
         def show
-          add_breadcrumb @project.name, naturesoft_projects.new_admin_project_path
+          add_breadcrumb @project.name, naturesoft_projects.new_backend_project_path
           add_breadcrumb "Show"
         end
     
         # GET /projects/new
         def new
           @project = Project.new
-          add_breadcrumb "New Project", naturesoft_projects.new_admin_project_path
+          add_breadcrumb "New Project", naturesoft_projects.new_backend_project_path
         end
     
         # GET /projects/1/edit
         def edit
-          add_breadcrumb @project.name, naturesoft_projects.new_admin_project_path
+          add_breadcrumb @project.name, naturesoft_projects.new_backend_project_path
           add_breadcrumb "Edit"
         end
     
@@ -45,7 +45,7 @@ module Naturesoft
           end
     
           if @project.save
-            redirect_to admin_projects_path, notice: 'Project was successfully created.'
+            redirect_to backend_projects_path, notice: 'Project was successfully created.'
           else
             render :new
           end
@@ -60,7 +60,7 @@ module Naturesoft
             end
           end
           if @project.update(project_params)
-            redirect_to admin_projects_path, notice: 'Project was successfully updated.'
+            redirect_to backend_projects_path, notice: 'Project was successfully updated.'
           else
             render :edit
           end

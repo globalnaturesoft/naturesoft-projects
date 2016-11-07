@@ -1,4 +1,5 @@
-Naturesoft::Menus::Menu.class_eval do
+if Naturesoft::Core::available?("menus")
+  Naturesoft::Menus::Menu.class_eval do
     @projects = {
       "list" => {
         "label" => "List",
@@ -10,4 +11,5 @@ Naturesoft::Menus::Menu.class_eval do
         }
       }
     }
+  end
 end
